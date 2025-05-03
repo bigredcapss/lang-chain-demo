@@ -21,7 +21,8 @@ conda env remove -n testenv # 删除刚创建的 testenv 环境
 依赖安装：常用依赖可参考requirements.txt
 
 # 代码目录介绍
-* part1: lang-chain的基础抽象示例
+* part01: lang-chain的基础抽象示例
+* part02: 基于langchain构建一个聊天机器人
 
 
 
