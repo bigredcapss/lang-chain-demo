@@ -23,6 +23,12 @@ conda env remove -n testenv # 删除刚创建的 testenv 环境
 # 代码目录介绍
 * part01: lang-chain的基础抽象示例
 * part02: 基于langchain构建一个聊天机器人
+* part03: 基于langchain的rag抽象构建聊天机器人
+* part04: 基于langchain的tool抽象构建agent
+* part05: 大模型长期记忆的解决方案
+* part06: 缓存-节省使用大模型成本的方案
+* part07: 使用hugging face上的模型
+* part08: 如何在项目中使用开源模型-langchain与集中接入
 
 
 

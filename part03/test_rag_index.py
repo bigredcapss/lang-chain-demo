@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*-
 
 # filename : test_rag_index.py
-# description : 基于langchain构建一个会记事的聊天机器人
+# description : 基于Chroma实现RAG索引化过程
 # author by : peanut
 # date : 2025/5/1
 
@@ -17,6 +17,7 @@ LangChain 支持了很多的向量数据库，它们都有一个统一的接口�
 比如，你可以指定 Hugging Face 这个模型社区中的特定模型来做 Embedding。
 
 
+
 """
 
 from langchain_community.document_loaders import TextLoader
@@ -24,26 +25,25 @@ from langchain_openai import OpenAIEmbeddings
 from langchain_chroma import Chroma
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 
-# 加载文档
-loader = TextLoader("introduction.txt")
+# 第一步：加载文档
+loader = TextLoader("./introduce.txt")
 docs = loader.load()
 
-# 分割文档
+# 第二步：分割文档
 text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
 splits = text_splitter.split_documents(docs)
 
-# 创建向量存储
+# 第三步：创建向量存储
 vectorstore = Chroma(
     collection_name="ai_learning",
     embedding_function=OpenAIEmbeddings(),
     persist_directory="vectordb"
 )
-
-# 添加文档到向量存储
+# 第四步：添加文档到向量存储
 vectorstore.add_documents(splits)
 
-# 调用 similarity_search 检索向量数据库的数据
-documents = vectorstore.similarity_search("专栏的作者是谁？")
+# 第五步：调用 similarity_search 检索向量数据库的数据
+documents = vectorstore.similarity_search("文章的作者是谁？")
 print(documents)
 
 
